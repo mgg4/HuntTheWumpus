@@ -70,6 +70,7 @@
     <Compile Include="AboutHuntTheWumpus.Designer.cs">
       <DependentUpon>AboutHuntTheWumpus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Answer.cs" />
     <Compile Include="Cave.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="GameControl.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="PlayerWinsDialog.Designer.cs">
       <DependentUpon>PlayerWinsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Question.cs" />
     <Compile Include="QuitGameDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +168,9 @@
     <None Include="Resources\NW_noTunnel.png" />
     <None Include="Resources\N_noTunnel.png" />
     <None Include="Resources\NE_noTunnel.png" />
+    <None Include="Resources\triviaQuestions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\S_noTunnel.png" />
     <None Include="Resources\SE_noTunnel.png" />
     <None Include="Resources\SW_noTunnel.png" />

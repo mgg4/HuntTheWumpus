@@ -1,0 +1,28 @@
+[
+  {
+    "type":"TF",
+    "question":"The Space Needle is in Seattle",
+    "hints": [
+      "The Space Needle is not in Tacoma",
+      "The Space Needle was built for the 1962 Worlds Fair"
+    ],
+    "correct":1 
+  },
+  {
+    "type":"Multi",
+    "question":"The tallest mountain in Washington State is...",
+    "hints": [
+      "Mount Rainier is tall",
+      "Mount Hood is not in Washington State",
+      "Mount Rainier is 14,417 feet tall",
+      "Mount Baker is 10,786 feet tall"
+    ],
+    "answers":[
+      "Mount Hood",
+      "Mount Baker",
+      "Mount Rainier",
+      "Mount Shasta"
+    ],
+    "correct":2
+  }
+]
