@@ -27,6 +27,7 @@ namespace HuntTheWumpus
         Player player;      // The Player object for the current player.
         Cave cave;          // The current Cave object the game is using.
                             // Wumpus wumpus;
+        public Trivia trivia;      // Trivia object
 
         // The non-object members of the class.  These are also private members.
         bool gameInProgress = false;    // When we are starting out, there is no game in progress.
@@ -45,6 +46,8 @@ namespace HuntTheWumpus
         {
             this.ui = ui;
             player = new HuntTheWumpus.Player(this);
+            trivia = new HuntTheWumpus.Trivia(this);
+            TriviaTest triviaTest = new HuntTheWumpus.TriviaTest(this);
         }
 
         /// <summary>

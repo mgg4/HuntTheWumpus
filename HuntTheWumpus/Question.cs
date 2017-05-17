@@ -8,20 +8,22 @@ namespace HuntTheWumpus
 {
 
 
+
     /// <summary>
     /// The Question Object contains the information about a Trivia Question.
     /// </summary>
     class Question
     {
         // Enums
-        enum QuestionType { NULL, MULTI, TF};
+        public enum QuestionType { NULL, MULTI, TF };
 
         // Class members/values
         QuestionType questionType;
         String questionText;
-        String[] questionHints;
-        Answer[] questionAnswers;
+        List<Answer> questionAnswers = new List<Answer>();
+        List<String> questionHints = new List<String>();            // The global list of Hints.  This makes providing hints easier.
         int correctAnswerIndex;
+        public bool asked;
 
 
         /// <summary>
@@ -31,7 +33,8 @@ namespace HuntTheWumpus
         {
             this.questionType = QuestionType.NULL;
             this.questionText = null;
-            this.questionAnswers = [];
+            this.questionAnswers = null;
+            this.questionHints = null;
         }
 
         /// <summary>
@@ -42,20 +45,28 @@ namespace HuntTheWumpus
         /// <param name="hints">The string array containing the hints for this question</param>
         /// <param name="correctAnswer">The index of the correct answer, or 1 for True and 0 for False.</param>
         /// <param name="answers">The string array containing the possible answers for this question</param>
-        Question(QuestionType type, String question, String[] hints, int correctAnswer, String[] answers)
+        public Question(QuestionType type, String question, String[] hints, int correctAnswer, String[] answers)
         {
             int i;
 
-            this.questionType = type;
-            this.questionText = question;
-            this.correctAnswerIndex = correctAnswer;
-            for (i=0;i<hints.Length;i++)
+            questionType = type;                   // Set the single value members...
+            questionText = question;               // ...from the parameters provided...
+            correctAnswerIndex = correctAnswer;    // ...
+            asked = false;                         // Mark this question as yet to be asked.  
+                                                   // This prevents the same question from being asked multiple times.
+            
+            // Now spin through the multi-value parameters and set them into the Question object.
+            //for (i = 0; i < hints.Length; i++)
+            //{
+            //    questionHints.Add(hints[i]);
+            //}
+            questionHints.AddRange(hints);
+            if (answers != null)
             {
-                this.questionHints[i] = hints[i];
-            }
-            for (i=0;i<answers.Length;i++)
-            {
-                this.questionAnswers[i] = Answer(i, answers[i]);
+                for (i = 0; i < answers.Length; i++)
+                {
+                    questionAnswers.Add(new Answer(i, answers[i].ToString()));
+                }
             }
         }
     }

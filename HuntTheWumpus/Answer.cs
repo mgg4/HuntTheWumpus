@@ -12,5 +12,13 @@ namespace HuntTheWumpus
     /// </summary>
     class Answer
     {
+        String value;
+        int    index;
+
+        public Answer(int nbr, String answerString)
+        {
+            this.value = answerString;
+            this.index = nbr;
+        }
     }
 }

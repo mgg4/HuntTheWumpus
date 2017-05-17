@@ -454,5 +454,16 @@ namespace HuntTheWumpus
                 updateUI();
             }
         }
+
+        private void showTestTriviaDialog(object sender, EventArgs e)
+        {
+            TriviaTest ttd = new TriviaTest(gc);
+            DialogResult action = ttd.ShowDialog();
+            if (action == DialogResult.OK)
+            {
+                updateUI();
+            }
+            updateUI();
+        }
     }
 }
