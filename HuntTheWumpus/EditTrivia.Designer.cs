@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.triviaListView = new System.Windows.Forms.ListView();
             this.Nbr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -62,23 +61,23 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 36);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 36);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(164, 38);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 38);
             this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 36);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
             // triviaListView
             // 
@@ -86,9 +85,9 @@
             this.Nbr,
             this.Type,
             this.Question});
-            listViewItem1.Tag = "A";
-            this.triviaListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            this.triviaListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.triviaListView.FullRowSelect = true;
+            this.triviaListView.GridLines = true;
             this.triviaListView.Location = new System.Drawing.Point(13, 44);
             this.triviaListView.Name = "triviaListView";
             this.triviaListView.Size = new System.Drawing.Size(1149, 843);
@@ -99,15 +98,17 @@
             // Nbr
             // 
             this.Nbr.Text = "Nbr";
+            this.Nbr.Width = 50;
             // 
             // Type
             // 
             this.Type.Text = "Type";
+            this.Type.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Question
             // 
             this.Question.Text = "Question";
-            this.Question.Width = 400;
+            this.Question.Width = 1025;
             // 
             // EditTrivia
             // 

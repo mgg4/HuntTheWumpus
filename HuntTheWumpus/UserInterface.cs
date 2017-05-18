@@ -196,6 +196,7 @@ namespace HuntTheWumpus
                 updateRoomFields();
                 updatePlayerStats();
                 updateMessages();
+                setRandomHintMessage();
             } else
             {
                 // Game no longer in progress. Clear the game board.
@@ -205,6 +206,7 @@ namespace HuntTheWumpus
                 arrowsField.Text = "";
                 messageBox.Text = "";
                 errorField.Text = "";
+                hintText.Text = "";
             }
         }
 
@@ -317,6 +319,16 @@ namespace HuntTheWumpus
         public void setErrorMessage(string msg)
         {
             errorField.Text = msg;
+        }
+
+        public void setHintMessage(string msg)
+        {
+            hintText.Text = msg;
+        }
+
+        public void setRandomHintMessage()
+        {
+            hintText.Text = gc.trivia.getRandomHint();
         }
 
         // Routines to handle the clicks on the room fields.
@@ -464,6 +476,11 @@ namespace HuntTheWumpus
                 updateUI();
             }
             updateUI();
+        }
+
+        private void editTriviaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditTrivia etd = new EditTrivia(gc.trivia);
         }
     }
 }

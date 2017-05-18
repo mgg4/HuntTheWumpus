@@ -10,7 +10,7 @@ namespace HuntTheWumpus
     /// The Answer Object encapsulates all of the necessary data and methods for managing an answer to a trivia question.
     /// The Question Object will contain multiple Answer Objects, representing the possible answers to the question.
     /// </summary>
-    class Answer
+    public class Answer
     {
         String value;
         int    index;

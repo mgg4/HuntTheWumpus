@@ -12,17 +12,17 @@ namespace HuntTheWumpus
     /// <summary>
     /// The Question Object contains the information about a Trivia Question.
     /// </summary>
-    class Question
+    public class Question
     {
         // Enums
         public enum QuestionType { NULL, MULTI, TF };
 
         // Class members/values
-        QuestionType questionType;
-        String questionText;
-        List<Answer> questionAnswers = new List<Answer>();
-        List<String> questionHints = new List<String>();            // The global list of Hints.  This makes providing hints easier.
-        int correctAnswerIndex;
+        public QuestionType questionType;
+        public String questionText;
+        public List<Answer> questionAnswers = new List<Answer>();
+        public List<String> questionHints = new List<String>();            // The global list of Hints.  This makes providing hints easier.
+         int correctAnswerIndex;
         public bool asked;
 
 

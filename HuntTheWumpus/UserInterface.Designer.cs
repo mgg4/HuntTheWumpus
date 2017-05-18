@@ -43,6 +43,10 @@
             this.howToPlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buyAHintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.triviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editTriviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomNW = new System.Windows.Forms.Label();
             this.roomNE = new System.Windows.Forms.Label();
             this.roomN = new System.Windows.Forms.Label();
@@ -70,8 +74,8 @@
             this.playerNameField = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.errorField = new System.Windows.Forms.Label();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.triviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hintPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.hintText = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NpictureBox)).BeginInit();
@@ -82,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NWpictureBox)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.hintPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -91,7 +96,8 @@
             this.fileToolStripMenuItem,
             this.gameToolStripMenuItem,
             this.helpToolStripMenuItem,
-            this.testToolStripMenuItem});
+            this.testToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1649, 42);
@@ -184,23 +190,53 @@
             // howToPlayToolStripMenuItem
             // 
             this.howToPlayToolStripMenuItem.Name = "howToPlayToolStripMenuItem";
-            this.howToPlayToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.howToPlayToolStripMenuItem.Size = new System.Drawing.Size(241, 38);
             this.howToPlayToolStripMenuItem.Text = "How to Play";
             this.howToPlayToolStripMenuItem.Click += new System.EventHandler(this.howToPlayToolStripMenuItem_Click);
             // 
             // buyAHintToolStripMenuItem
             // 
             this.buyAHintToolStripMenuItem.Name = "buyAHintToolStripMenuItem";
-            this.buyAHintToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.buyAHintToolStripMenuItem.Size = new System.Drawing.Size(241, 38);
             this.buyAHintToolStripMenuItem.Text = "Buy a hint";
             this.buyAHintToolStripMenuItem.Click += new System.EventHandler(this.buyAHintToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(241, 38);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.triviaToolStripMenuItem});
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(69, 38);
+            this.testToolStripMenuItem.Text = "Test";
+            // 
+            // triviaToolStripMenuItem
+            // 
+            this.triviaToolStripMenuItem.Name = "triviaToolStripMenuItem";
+            this.triviaToolStripMenuItem.Size = new System.Drawing.Size(169, 38);
+            this.triviaToolStripMenuItem.Text = "Trivia";
+            this.triviaToolStripMenuItem.Click += new System.EventHandler(this.showTestTriviaDialog);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editTriviaToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 38);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // editTriviaToolStripMenuItem
+            // 
+            this.editTriviaToolStripMenuItem.Name = "editTriviaToolStripMenuItem";
+            this.editTriviaToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.editTriviaToolStripMenuItem.Text = "Edit Trivia";
+            this.editTriviaToolStripMenuItem.Click += new System.EventHandler(this.editTriviaToolStripMenuItem_Click);
             // 
             // roomNW
             // 
@@ -492,7 +528,7 @@
             // 
             this.panel3.Controls.Add(this.errorField);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 989);
+            this.panel3.Location = new System.Drawing.Point(0, 1027);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1649, 100);
             this.panel3.TabIndex = 16;
@@ -509,27 +545,32 @@
             this.errorField.Text = "errorField";
             this.errorField.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // testToolStripMenuItem
+            // hintPanel
             // 
-            this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.triviaToolStripMenuItem});
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(69, 38);
-            this.testToolStripMenuItem.Text = "Test";
+            this.hintPanel.Controls.Add(this.hintText);
+            this.hintPanel.Location = new System.Drawing.Point(13, 956);
+            this.hintPanel.Name = "hintPanel";
+            this.hintPanel.Size = new System.Drawing.Size(1618, 65);
+            this.hintPanel.TabIndex = 17;
             // 
-            // triviaToolStripMenuItem
+            // hintText
             // 
-            this.triviaToolStripMenuItem.Name = "triviaToolStripMenuItem";
-            this.triviaToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
-            this.triviaToolStripMenuItem.Text = "Trivia";
-            this.triviaToolStripMenuItem.Click += new System.EventHandler(this.showTestTriviaDialog);
+            this.hintText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hintText.Enabled = false;
+            this.hintText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hintText.Location = new System.Drawing.Point(3, 3);
+            this.hintText.Name = "hintText";
+            this.hintText.Size = new System.Drawing.Size(1615, 40);
+            this.hintText.TabIndex = 0;
+            this.hintText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1649, 1089);
+            this.ClientSize = new System.Drawing.Size(1649, 1127);
+            this.Controls.Add(this.hintPanel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
@@ -553,6 +594,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.hintPanel.ResumeLayout(false);
+            this.hintPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -602,6 +645,10 @@
         private System.Windows.Forms.Label errorField;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem triviaToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel hintPanel;
+        private System.Windows.Forms.TextBox hintText;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editTriviaToolStripMenuItem;
     }
 }
 

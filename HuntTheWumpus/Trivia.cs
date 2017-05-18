@@ -72,9 +72,9 @@ namespace HuntTheWumpus
     public class Trivia
     {
         // Member variables
-        int questionsAsked;
-        List<Question> questions = new List<Question>();    // The list of Questions
-        List<String> hints = new List<String>();            // The global list of Hints.  This makes providing hints easier.
+        int questionsAsked;                                 // Count of questions asked.  Used to determine when we run out of questions.
+        public List<Question> questions = new List<Question>();    // The list of Questions
+        public List<String> hints = new List<String>();            // The global list of Hints.  This makes providing hints easier.
         GameControl gc;
 
         public Trivia(GameControl gc)
@@ -157,6 +157,13 @@ namespace HuntTheWumpus
             // Increment the count of questions asked and return the question.
             questionsAsked++;
             return questions[i];
+        }
+
+        public string getRandomHint()
+        {
+            // Currently, return one of the hints from the questions.
+            // Eventual plan is to include random hints about locations in the Map as well.
+            return hints[gc.rng.Next(0, hints.Count())];
         }
     }
 }
